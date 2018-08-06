@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6,form,legend,img
+{
+  margin: 0px;
+  padding: 0px;
+}
+
+h1, h2, h3, h4, h5{
+  text-decoration:none;font-weight:normal;font-size:100%;
+}
+
+s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体，取消s标签的删除线*/
+
+ul,ol {
+  list-style: none;
+}
+
+a {color:#999; text-decoration:none;     cursor: pointer;}  /*去掉超链接的下划线*/
+
+input {padding-top: 0px;padding-bottom: 0px;font-family: "SimSun","宋体"}
+
+select, input {vertical-align: middle}
+
+select, input ,textarea { font-size: 100%;margin: 0px}
+
+textarea{resize: none;}
+
+img {
+  border: 0px;
+  vertical-align: middle}
+
+table {
+  border-collapse: collapse;
+}
+
+a,button,input{
+  outline: none;
+}
+
+
+
+
+

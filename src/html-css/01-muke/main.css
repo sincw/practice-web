@@ -1,0 +1,360 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+ul li{
+  list-style: none;
+}
+
+.fr{
+  float: right;
+}
+
+.fl{
+  float: left;
+}
+
+header{
+  height: 72px;
+  width: 100%;
+  background: #07111b;
+  min-width: 1200px;
+}
+
+.plan-list{
+  background-color: #f3f5f7;
+}
+
+.logo{
+  background: transparent url("img/logo.png") no-repeat center center;
+  height: 72px;
+  width: 140px;
+  margin: 0 20px;
+}
+
+.logo a{
+
+  text-indent: -999em;
+  display: block;
+}
+
+nav {
+  display: block;
+}
+
+nav a {
+  position: relative;
+  float: left;
+  display: block;
+  font-size: 16px;
+  color: rgba(255,255,255,.6);
+  line-height: 72px;
+  padding: 0 25px;
+  text-align: center;
+}
+
+nav a:hover{
+  color: white;
+}
+
+.i-new{
+  width: 16px;
+  height: 16px;
+  top: -10px;
+  display: inline-block;
+  position: relative;
+  background: url("img/new.png") no-repeat;
+}
+
+.nav-right a {
+  position: relative;
+  float: left;
+  display: block;
+  font-size: 14px;
+  color: rgba(255,255,255,.6);
+  padding: 0 18px;
+  text-align: center;
+}
+
+.bell {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background: url("img/bell.png") no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.redblock {
+  width: 8px;
+  height: 8px;
+  display: block;
+  background: red;
+  position: absolute;
+  border-radius: 4px;
+  top: 6px;
+  right: 15px;
+}
+
+.down{
+  line-height: 72px;
+}
+
+.buysome {
+  position: relative;
+  height: 36px;
+  line-height: 36px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 18px;
+  /*width: 65px;*/
+}
+
+.message{
+  height: 36px;
+  line-height: 36px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.userinfo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-block;
+  background: url("img/userinfo.jpg") no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  line-height: 72px;
+}
+
+.nav-right .head {
+  line-height: 72px;
+  padding-right: 28px;
+}
+
+.shop-car {
+
+  position: relative;
+  top: 2px;
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url("img/shopcar.png") no-repeat;
+  background-size: cover;
+}
+
+.inner {
+  width: 1152px;
+  margin: 0 auto;
+}
+
+
+.adbaner {
+  height: 120px;
+  background-color: #472e7a;
+}
+
+.tab-nav {
+  height: 72px;
+  background-color: #fff;
+  position:relative;
+  z-index: 10;
+  box-shadow: 0 8px 16px 0 rgba(28,31,33,.1);
+}
+
+.tab-nav ul {
+  text-decoration: none;
+  padding-top: 16px;
+  overflow: hidden;
+  height: 56px;
+}
+
+.tab-nav ul li {
+  float: left;
+  display: block;
+  padding: 0 16px;
+  margin-right: 32px;
+  color: #5e5e5e;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 37px;
+}
+
+.tab-nav ul li a{
+  color: #5e5e5e;
+}
+
+.tab-nav ul li a:hover{
+  color: blueviolet;
+}
+
+.tab-nav .active:after {
+  margin: 0 auto;
+  content: '';
+  display: block;
+  width: 16px;
+  border-radius: 2px;
+  height: 3px;
+  background: blueviolet;
+}
+
+.plan-list {
+  padding-top: 24px;
+  padding-bottom: 48px;
+}
+
+
+.img-box {
+  width: 270px;
+  height: 148px;
+  display: block;
+  background-image: url("img/course.jpg");
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.course {
+  width: 270px;
+  margin-bottom: 24px;
+  margin-right: 24px;
+  padding-top: 14px;
+}
+.course:nth-child(4n){
+  margin-right: 0px;
+}
+
+
+.curtext {
+  padding: 0 11px;
+}
+
+.course h3 {
+  font-size: 16px;
+  color: #5e5e5e;
+}
+
+.course .descrip {
+  font-size: 12px;
+  color: #9199a1;
+  line-height: 24px;
+  margin: 4px 0;
+}
+
+.course .descrip span{
+  margin-right: 12px;
+}
+
+.course .price .addcar {
+  font-size: 12px;
+  color: #9199a1;
+  float: right;
+}
+
+.userinfo1{
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  background: url("img/bell.png") no-repeat;
+  background-size: cover;
+}
+
+.course .price .pri {
+  font-size: 12px;
+  color: #5e5e5e;
+  float: left;
+}
+
+.course .price {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.clearfix:after {
+  content: ' ';
+  height: 0;
+  display: block;
+  clear: both;
+}
+
+footer {
+  background: #07111b;
+}
+
+footer .inner{
+  padding: 27px 0;
+  color: #6d6969;
+  font-size: 12px;
+}
+
+.footer_link ul li {
+  float: left;
+  margin-right: 30px;
+  color: white;
+}
+
+.footer_intro{
+  padding-left: 20px;
+}
+
+.footer_link{
+margin-bottom: 4px;
+  line-height: 1.8;
+}
+
+.footer_link ul li a{
+  color: white;
+  font-size: 12px;
+}
+
+.page {
+  margin-top: 12px;
+  overflow: hidden;
+  clear: both;
+  text-align: center;
+  background-color: #f3f5f7;
+}
+
+.disabled_page{
+  display: inline-block;
+  padding: 0 12px;
+  min-width: 20px;
+  height: 39px;
+  line-height: 39px;
+  font-size: 14px;
+  color: #93999f;
+  text-align: center;
+}
+
+.active2{
+  background: #4d555d;
+  color: #fff;
+}
+
+.page a{
+  display: inline-block;
+  margin: 0 12px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  color: #4d555d;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.page a:nth-last-child(2) {
+  width: auto;
+}
+.page a:nth-child(3) {
+  color: #fff;
+}

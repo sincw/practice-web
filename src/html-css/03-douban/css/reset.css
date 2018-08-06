@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/*内外边距类元素*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, img {
+    margin: 0;
+    padding: 0;
+}
+
+/*样式类，*/
+
+/*去掉边框、去掉轮廓（比如输入框外面的蓝边框）*/
+fieldset, img, input, button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+
+/* 去掉图片底侧默认的3像素空白缝隙*/
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/*去掉列表前面的圆点*/
+ul, ol {
+    list-style: none;
+}
+
+/*去掉超链接的下划线*/
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+/*文本样式类*/
+/*font-size:100% 的意思是：让它们和父亲一样大，避免在不同的浏览器中显示大小不一致*/
+h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+select, input, textarea {
+    font-size: 100%;
+}
+
+/*去掉i标签和em的斜体，取消s标签的删除线*/
+s, i, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+
+

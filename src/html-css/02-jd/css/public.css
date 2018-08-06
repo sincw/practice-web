@@ -1,0 +1,35 @@
+body{
+  background-color: #f0f3ef;
+  font: 12px/1.5 Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5b8b\4f53,sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*start:清除浮动【推荐此方式进行清除浮动】。左浮动和右浮动都清除了，盒子刚好达到闭合的状态*/
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1; /*IE/7/6*/
+}
+/*end：清除浮动*/
+
+
+.fl{
+  float: left;
+}
+
+.fr{
+  float: right;
+}
+
+.red{
+  color: red;
+}
+
+
