@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标跟随</title>
+</head>
+<style>
+    body {
+        height: 5000px;
+    }
+    img {
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        top: 100px;
+        background-color: #48aa0d;
+    }
+</style>
+<body>
+<img></img>
+</body>
+<script src="utils.js"></script>
+<script>
+
+var img = document.getElementsByTagName("img")[0];
+var body = document.getElementsByTagName("body")[0];
+var mousePos = {
+    left:undefined,
+    top:undefined
+};
+
+document.onmousemove  = (function(e){
+    var page = utils.page(e);
+    img.style.left = page.x  + 'px';
+    mousePos.left = page.ex;
+    img.style.top = page.y + 'px';
+    mousePos.top = page.ey;
+});
+
+document.onscroll = (function(e){
+    var top = mousePos.top + document.documentElement.scrollTop + 'px';
+    img.style.top = top;
+});
+</script>
+</html>

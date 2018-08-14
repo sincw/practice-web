@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div动画</title>
+</head>
+<style>
+    #body {
+        height: 5000px;
+    }
+    
+    img {
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        top: 100px;
+        background-color: #48aa0d;
+    }
+</style>
+<body>
+<input type="checkbox" checked style="margin-left: 500px"/>匀速运动
+<div id="body">
+    <img></img>
+</div>
+
+</body>
+<script src="utils.js"></script>
+<script>
+
+    var img = document.getElementsByTagName("img")[0];
+    var checkbox = document.getElementsByTagName("input")[0];
+
+    document.getElementById("body").onclick = function () {
+        var is_con = document.getElementsByTagName("input")[0].checked;
+        animate(img,utils.page(),1,is_con);
+    }
+
+
+    /**
+     * 盒子移动
+     * @param obj 对象
+     * @param target 目标位置{x:100,y:100}
+     * @param n 时间 需要多少n秒完成
+     * @param is_con 是否匀速 默认缓速
+     */
+    function animate(obj, target, n, is_con) {
+        
+        var pos = {x: obj.offsetLeft, y: obj.offsetTop};
+        var time = n * 1000;//n秒内到达
+        var unit = 20;
+        
+        var disX = Math.abs(pos.x - target.x);//距离
+        var dirX = (target.x > pos.x ? 1 : -1);//方向
+        var speedX = dirX * disX / time * unit;//步长
+        // 要对步长进行处理   如果设置style.left = "25.42px"  ，offsetLeft会取整，得到25px，不处理会导致短距离缓速时无限循环，
+        // 但是处理了之后由于累计误差会导致x先到达，Y后到达的情况
+        speedX = speedX > 0 ? Math.ceil(speedX) : Math.floor(speedX);
+
+        // 同上
+        var disY = Math.abs(pos.y - target.y);
+        var dirY = (target.y > pos.y ? 1 : -1);
+        var speedY = dirY * disY / time * unit;
+        speedY = speedY > 0 ? Math.ceil(speedY) : Math.floor(speedY);
+        
+        var sinw = function () {
+            //当前对象的位置
+            var pos2 = {x: obj.offsetLeft, y: obj.offsetTop};
+            //当前对象距离目标的距离
+            var disx = Math.abs(pos2.x - target.x);
+            var disy = Math.abs(pos2.y - target.y);
+            //选择是否匀速
+            if(!is_con){
+                speedX = (dirX == 1 ) ?  Math.ceil(1 / 10 * disx) : Math.floor(-1 / 10 * disx);
+                speedY = (dirY == 1 ) ?  Math.ceil(1 / 10 * disy) : Math.floor(-1 / 10 * disy);
+            }
+            if (disx <= Math.abs(speedX) && disy <= Math.abs(speedY) ) {
+                obj.style.left = target.x + 'px';
+                obj.style.top = target.y + 'px';
+                //清楚定时器
+                clearInterval(window.timer);
+            } else {
+                //避免累计误差导致xy不能同时到达时,,,一边的距离满足条件后只add不满足条件的一表
+                if(!(disx <= Math.abs(speedX))){
+                    obj.style.left = obj.offsetLeft + speedX + 'px';
+                }
+                if(!(disy <= Math.abs(speedY))){
+                    obj.style.top = obj.offsetTop + speedY + 'px';
+                }
+            }
+        };
+        //启动前清楚定时器，防止多次触发
+        clearInterval(window.timer);
+        window.timer = setInterval(sinw, unit);
+    }
+
+
+</script>
+</html>

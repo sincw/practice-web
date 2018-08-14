@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+</head>
+<style>
+    #main {
+        display: inline-block;
+        position: relative;
+        width: 295px;
+        height: 235px;
+        background: url("images/banner1.jpg") no-repeat 0 0;
+        background-size: cover;
+    }
+    
+    #big {
+        position: absolute;
+        display: inline-block;
+        width: 295px;
+        height: 235px;
+        left: 300px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+    }
+    
+    #mask {
+        position: relative;
+        width: 148px;
+        height: 118px;
+        display: inline-block;
+        background-color: #48aa0d;
+        opacity: 0.3
+        
+    }
+
+
+</style>
+<body>
+<div id="main">
+    <div id="mask"></div>
+    <div id="big">
+        <img src="images/banner1.jpg"></img>
+    </div>
+
+</div>
+
+</body>
+<script src="utils.js"></script>
+<script>
+    var div = window.document.querySelectorAll("#main")[0];
+    var maskdiv = window.document.querySelectorAll("#mask")[0];
+    var bigdiv = window.document.querySelectorAll("#big")[0];
+    var img = window.document.querySelectorAll("img")[0];
+
+    var mw = div.offsetWidth;
+    var mh = div.offsetHeight;
+    var maskw = maskdiv.offsetWidth;
+    var maskh = maskdiv.offsetHeight;
+    var bigh = bigdiv.offsetHeight;
+    var bigw = bigdiv.offsetWidth;
+
+    div.onmousemove = function () {
+        var page = utils.page();
+        //4.用鼠标的位置减去盒子的位置获得鼠标在盒子内的位置。
+        var x = page.ex - this.offsetLeft - maskw / 2;
+        var y = page.ey - this.offsetTop - maskh / 2;
+
+        //防止mask跑到外面去
+        if (x < 0) {
+            x = 0;
+        }
+        if (x >= mw - maskw) {
+            x = mw - maskw;
+        }
+
+        //同上
+        if (y < 0) {
+            y = 0;
+        }
+        if (y >= mh - maskh) {
+            y = mh - maskh;
+        }
+        maskdiv.style.left = x + "px";
+        maskdiv.style.top = y + "px";
+
+        //由于这个比例关系，当小盒子移动，大盒子等比移动
+        bigh / maskh == bigw / maskw;
+
+        var bili = bigh / maskh;
+        var xx = bili * x;  //知道比例，就可以移动大图片了
+        var yy = bili * y;
+
+        img.style.marginTop = -yy + "px";
+        img.style.marginLeft = -xx + "px";
+
+    }
+
+</script>
+</html>
