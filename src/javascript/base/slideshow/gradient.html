@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变轮播图</title>
+</head>
+<style>
+    .main-slider {
+        padding-top: 10px;
+        position: relative;
+        width: 590px;
+        height: 480px;
+        overflow: hidden;
+    }
+    
+    .slider-order {
+        position: absolute;
+        left: 46px;
+        bottom: 20px;
+        text-align: center;
+        z-index: 1;
+    }
+    
+    .slider-order li {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        text-align: center;
+        background: hsla(0, 0%, 100%, .2);
+        margin-right: 1px;
+    }
+    
+    .arrow-left, .arrow-right {
+        position: absolute;
+        z-index: 1;
+        display: inline-block;
+        height: 40px;
+        width: 24px;
+        background-color: rgba(0, 0, 0, 0.1);
+        top: 50%;
+        margin-top: -20px;
+        text-align: center;
+        vertical-align: middle;
+        font: 400 22px/40px "sumsun";
+        
+    }
+    
+    .arrow-left {
+        left: 0px;
+    }
+    
+    .arrow-right {
+        right: 0px;
+    }
+    
+    .arrow-left:hover, .arrow-right:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .slider-bg a {
+        position: absolute;
+        left: 0px;
+        display: inline-block;
+        float: left;
+        
+    }
+    
+    .slider-bg {
+        position: absolute;
+    }
+    
+    .slider-order .active {
+        background-color: white;
+    }
+</style>
+<body>
+<div class="main-slider">
+    <div class="slider-bg" style="">
+        <a href="">
+            <img src="imgs/banner1.jpg"
+                 alt="">
+        </a>
+        <a href="">
+            <img src="imgs/banner2.jpg"
+                 alt="">
+        </a>
+        <a href="">
+            <img src="imgs/banner3.jpg"
+                 alt="">
+        </a>
+    </div>
+    <ul class="slider-order">
+    </ul>
+    <a href="javascript:;" class="arrow-left">&lt;</a>   <!--左边的箭头-->
+    <a href="javascript:;" class="arrow-right">&gt;</a>  <!--右边的箭头-->
+</div>
+</body>
+<script>
+    (function (element) {
+        //初始化时背景图序号
+        var bgnum = 0;
+        var bgWidth = 590;
+
+        //获取索引ul
+        var order = element.getElementsByClassName('slider-order')[0];
+
+        //获取背景
+        var bg = element.getElementsByClassName('slider-bg')[0];
+        var imglen = bg.children.length;
+
+        //初始化盒子位置
+        for (var j = 0; j < imglen; j++) {
+            bg.children[j].style.display = 'none';
+        }
+        bg.children[0].style.display = 'block';
+
+        //按照图片数量添加下方索引图标
+        bg.style.width = (imglen + 2) * bgWidth + 'px';
+        for (var i = 0; i < imglen; i++) {
+            var li = document.createElement("li")
+            if (i == 0) {
+                li.className = "active";
+            }
+            order.appendChild(li);
+        }
+
+        //获取所有索引
+        var orders = order.getElementsByTagName('li');
+
+        //盒子渐变，前一章节有说明
+        function fade(ele, isOut, time) {
+            clearInterval(ele.timer);
+            ele.opacity = isOut ? 1 : 0;
+            var speed = isOut ? -0.1 : 0.1;
+            var unit = Math.abs(time / (1 / speed));
+            if(!isOut){
+                ele.style.display = "block";
+                ele.style.opacity = 0;
+            }
+            ele.timer = setInterval(function () {
+                var opacity = ele.opacity + speed;
+                if (Math.abs(opacity) < 0.01) {
+                    ele.style.opacity = opacity;
+                    ele.opacity = opacity;
+                    ele.style.display = "none";
+                    clearInterval(ele.timer);
+                } else if (Math.abs(opacity  - 1) < 0.01) {
+                    ele.style.opacity = opacity;
+                    ele.opacity = opacity;
+                    clearInterval(ele.timer);
+                } else {
+                    ele.style.opacity = opacity;
+                    ele.opacity = opacity;
+                }
+            }, unit)
+        }
+
+        //给每一个索引加上事件，平滑移动到自己所对应的背景
+        for (var i = 0; i < orders.length; i++) {
+            orders[i].index = i;
+            orders[i].onclick = function (ev) {
+                for (var j = 0; j < orders.length; j++) {
+                    orders[j].className = '';
+                }
+                this.className = 'active';
+                fade(bg.children[bgnum], true, 500);
+                bgnum = this.index;
+                fade(bg.children[this.index], false, 500);
+            }
+        }
+        
+        function next(){
+            fade(bg.children[bgnum], true, 500);
+            ++bgnum;
+            if(bgnum >= imglen){
+                bgnum = 0;
+            }
+            fade(bg.children[bgnum], false, 500);
+            for (var j = 0; j < imglen; j++) {
+                orders[j].className = '';
+            }
+            orders[bgnum].className = 'active';
+        }
+
+        function pre(){
+            
+            fade(bg.children[bgnum], true, 500);
+            --bgnum;
+            if(bgnum < 0){
+                bgnum = imglen -1;
+            }
+            fade(bg.children[bgnum], false, 500);
+            for (var j = 0; j < imglen; j++) {
+                orders[j].className = '';
+            }
+            orders[bgnum].className = 'active';
+        }
+
+        //绑定事件
+        element.getElementsByClassName('arrow-left')[0].onclick = pre;
+
+        element.getElementsByClassName('arrow-right')[0].onclick = next;
+
+        //添加定时器，自动轮播
+        var timer = setInterval(next, 3000);
+
+        //鼠标移动到背景时取消轮播
+        element.onmouseover = function () {
+            clearInterval(timer);
+        }
+
+        //鼠标离开后重写开始轮播
+        element.onmouseout = function () {
+            timer = setInterval(next, 3000);
+        }
+
+    })(window.document.querySelectorAll('.main-slider')[0]);
+</script>
+</html>
