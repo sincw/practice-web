@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    #div1 span {
+        width: 70px;
+        height: 50px;
+        background:greenyellow;
+        position: absolute;
+        left: 200px;
+        top: 75px;
+    }
+    
+    #div1 {
+        width: 200px;
+        height: 200px;
+        background: red;
+        position: absolute;
+        left: -200px;
+        top: 0;
+    }
+</style>
+
+</head>
+<body>
+<div id="div1">
+    分享至XXXXXX
+<span id="share">
+点击分享
+</span>
+</div>
+</body>
+<script type="text/javascript">
+
+    var div1 = document.getElementById("div1");
+    div1.onmouseover = function () {
+        startMove(0);
+    }
+    div1.onmouseout = function () {
+        startMove(-200);
+    }
+
+    var timer = null;
+    
+    function startMove(iTarget) {
+        clearInterval(timer);
+        var div1 = document.getElementById("div1");
+        timer = setInterval(function () {
+            var speed = 0;
+            if (div1.offsetLeft > iTarget) {
+                speed = -10;
+            } else {
+                speed = 10;
+            }
+            if (div1.offsetLeft == iTarget) {
+                clearInterval(timer);
+            } else {
+                div1.style.left = div1.offsetLeft + speed + 'px';
+            }
+        }, 30);
+    }
+    
+</script>
+</html>

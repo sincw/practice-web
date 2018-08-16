@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .box a {
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .box .page {
+        padding: 0 15px;
+        width: 200px;
+        display: none;
+        margin-top: 9px;
+    }
+    
+    .box .title {
+        padding: 0 15px;
+    }
+    
+    .box .page p {
+        line-height: 22px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: #999;
+    }
+    
+    .box a.active {
+        border-bottom: red 2px solid;
+    }
+    
+    .box div.active {
+        display: block;
+    }
+</style>
+<div class="box">
+    <div class="title">
+        <a class="active" href="javascript:void(0)">促销</a>
+        <span class="spacer">|</span>
+        <a href="javascript:void(0)">公告</a>
+    </div>
+    <div>
+        <div class="page active">
+            <ul>
+                <li><p>旗舰电竞低至4折！旗舰电竞低至4折！</p></li>
+                <li><p>Segway平衡轮新品首发旗舰电竞低至4折！</p></li>
+                <li><p>潮流新品，大牌推荐旗舰电竞低至4折！</p></li>
+                <li><p>奥妙-向伟大的母亲致净旗舰电竞低至4折！</p></li>
+            </ul>
+        </div>
+        <div class="page">
+            <ul>
+                <li><p>国际顶级奢侈品品牌Balenci</p></li>
+                <li><p>京东PLUS会员权益更新及会</p></li>
+                <li><p>京东启用全新客服电话“95</p></li>
+                <li><p>关于召回普利司通（天津）</p></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var boxs = window.document.querySelectorAll('.box');
+    for (var i = 0; i < boxs.length; i++) {
+        fn(boxs[i]);
+    }
+
+    function fn(element) {
+        var arra = element.getElementsByTagName("a");
+        var pages = element.getElementsByClassName("page");
+        for (var n = 0; n < arra.length; n++) {
+            arra[n].onmouseover = function () {
+                for (var i = 0; i < arra.length; i++) {
+                    arra[i].className = arra[i].className.replace('active', '');
+                    arra[i].index = i;
+                    pages[i].className = pages[i].className.replace('active', '');
+                }
+
+                this.className = this.className + ' active';
+                pages[this.index].className = pages[this.index].className + ' active';
+            }
+        }
+    }
+</script>
+</body>
+</html>

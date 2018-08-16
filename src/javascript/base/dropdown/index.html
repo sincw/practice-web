@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    
+    body{
+        font-size: 14px;
+        font-family: sans-serif;
+    }
+    #navigation,#navigation li ul{
+        list-style-type: none;
+    }
+    #navigation li{
+        float: left;
+        text-align: center;
+        position: relative;
+    }
+    #navigation li a:link,#navigation li a:visited{
+        display: block;
+        text-decoration: none;
+        color: #000;
+        width: 160px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #fff;
+        background: #c5dbf2;
+        border-width: 1px 1px 0 0;
+    }
+    #navigation li a:hover{
+        color: #fff;
+        background: #2687eb;
+    }
+    #navigation li ul li{
+        float: none;
+    }
+    #navigation li ul{
+        display: none;
+        position: absolute;       /*二级ul使用绝对定位，宽度大于一级菜单时，才不会撑大一级*/
+        
+    }
+    #navigation li ul li a:link,#navigation li ul li a:visited{
+        display: block;
+        width: 160px;
+    }
+</style>
+
+</head>
+<body>
+<ul id="navigation">
+    <li><a href="#">首页</a></li>
+    <li onmouseover="showSubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">服务</a>
+        <ul>
+            <li><a href="#">服务一</a></li>
+            <li><a href="#">服务二</a></li>
+            <li><a href="#">服务三</a></li>
+            <li><a href="#">服务四</a></li>
+            <li><a href="#">服务五</a></li>
+        </ul>
+    </li>
+    <li onmouseover="showSubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">团队</a>
+        <ul>
+            <li><a href="#">团队一</a></li>
+            <li><a href="#">团队二</a></li>
+            <li><a href="#">团队三</a></li>
+            <li><a href="#">团队四</a></li>
+            <li><a href="#">团队五</a></li>
+        </ul>
+    </li>
+    <li><a href="#">方向</a></li>
+</ul>
+</body>
+<script type="text/javascript">
+    //显示子菜单
+    function showSubMenu(li){
+        var subMenu = li.getElementsByTagName("ul")[0];
+        subMenu.style.display = "block";
+    }
+
+    //隐藏子菜单
+    function hideSubMenu(li){
+        var subMenu = li.getElementsByTagName("ul")[0];
+        subMenu.style.display = "none";
+    }
+</script>
+</html>
