@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("h1,h2,p").addClass("blue");
+                $("div").addClass("blue");
+            });
+
+            $("#btn2").click(function(){
+                $("h1,h2,p").addClass("blue important");
+                $("div").addClass("important blue");
+            });
+
+            $("#btn3").click(function(){
+                $("h1,h2,p").removeClass("blue");
+                $("div").removeClass("blue");
+            });
+
+            $("#btn4").click(function(){
+                $("h1,h2,p").removeClass("important blue");
+                $("div").removeClass("important blue");
+            });
+
+            $("#btn5").click(function(){
+                $("div").toggleClass("blue");
+            });
+
+            $("#btn6").click(function(){
+                $("h3").css("background-color",'red');
+            });
+
+            $("#btn7").click(function(){
+                alert($("h3").css("background-color"));
+            });
+
+            $("#btn8").click(function(){
+                var style = {
+                    "background-color":'red',
+                    "font-size":"28px"
+                }
+                $("h3").css(style);
+            });
+            
+        });
+    </script>
+    <style type="text/css">
+        .important
+        {
+            font-weight:bold;
+            font-size:xx-large;
+        }
+        .blue
+        {
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+
+<h1>标题 1</h1>
+<h2>标题 2</h2>
+<p>这是一个段落。</p>
+<p>这是另一个段落。</p>
+<div>这是非常重要的文本！</div>
+<h3>CSS()方法！</h3>
+<br>
+<button id="btn1">向元素添加类</button>
+<button id="btn2">向元素添加多个类</button>
+<button id="btn3">向元素移除类</button>
+<button id="btn4">向元素移除多个类</button>
+<button id="btn5">添加/删除类的切换操作</button>
+<button id="btn7">CSS()获取样式</button>
+<button id="btn6">CSS()新增样式</button>
+<button id="btn8">CSS()新增多个样式</button>
+</body>
+</html>

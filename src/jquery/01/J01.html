@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                alert("Text: " + $("#test").text());
+            });
+            $("#btn2").click(function(){
+                alert("HTML: " + $("#test").html());
+            });
+            $("#btn3").click(function(){
+                alert("Value: " + $("#test2").val());
+            });
+            $("#btn4").click(function(){
+                alert($("#sincw").attr("title"));
+            });
+            $("#btn11").click(function(){
+                $("#test").text("Hello world!");
+            });
+            $("#btn22").click(function(){
+                $("#test").html("<b>Hello world!</b>");
+            });
+            $("#btn33").click(function(){
+                $("#test2").val("Dolly Duck");
+            });
+            $("#btn44").click(function(){
+                $("#sincw").attr("title",'#sincw2');
+            });
+            $("#btn55").click(function(){
+                $("#sincw").attr("title",function(i,old){
+                    return old + "999";
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+<p id="test">这是段落中的<b>粗体</b>文本。</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示 HTML</button>
+<button id="btn3">显示 VALUE</button>
+<button id="btn4">显示 attr</button>
+<button id="btn11">设置文本</button>
+<button id="btn22">设置 HTML</button>
+<button id="btn33">设置 VALUE</button>
+<button id="btn44">设置 attr</button>
+<button id="btn55">设置 attr(回调方法)</button>
+<input type="text" id="test2" value="米老鼠">
+<a href="#sincw" title="sincw" id="sincw">鼠标移入查看title变化</a>
+</body>
+
+</html>

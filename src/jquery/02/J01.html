@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .ancestors *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn0").click(function(){
+                $("#son0").parent().css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn1").click(function(){
+                $("#son1").parents().css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn2").click(function(){
+                $("#son1").parentsUntil("#grdf").css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn3").click(function(){
+                $("#grdf").children().css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn4").click(function(){
+                $("#grdf").children("ul").css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn5").click(function(){
+                $("#grdf").find("span").css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn6").click(function(){
+                $("#grdf").find("*").css({"color":"red","border":"2px solid red"});
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+<div class="ancestors">
+    <div id="grdf" style="width:500px;">div (曾祖父grdf)
+        <ul>ul (祖父)
+            <li>li (直接父)
+                <span id="son1">span</span>
+            </li>
+        </ul>
+        <div style="width:500px;">div (祖父)
+            <p>p (直接父)
+                <span id="son0">son</span>
+            </p>
+        </div>
+    </div>
+    
+
+</div>
+<button id="btn0">设置 son0的父亲</button>
+<button id="btn1">设置 son1的长辈</button>
+<button id="btn2">设置 son1和grdf之间的元素</button>
+<button id="btn3">设置 grdf的儿子</button>
+<button id="btn4">设置 grdf的ul儿子</button>
+<button id="btn5">设置 grdf的span后辈</button>
+<button id="btn6">设置 grdf的所有后辈</button>
+</body>
+</html>

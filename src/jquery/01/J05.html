@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn0").click(function(){
+                $("#div1").width($("#div1").width() - 100);
+                $("#div1").height($("#div1").height() - 20);
+                var txt="";
+                txt+="Width of div: " + $("#div1").width() + "</br>";
+                txt+="Height of div: " + $("#div1").height();
+                $("#div1").html(txt);
+            });
+            $("#btn1").click(function(){
+                var txt="";
+                txt+="Width of div: " + $("#div1").width() + "</br>";
+                txt+="Height of div: " + $("#div1").height();
+                $("#div1").html(txt);
+            });
+            $("#btn2").click(function(){
+                var txt="";
+                txt+="innerWidth of div: " + $("#div1").innerWidth() + "</br>";
+                txt+="innerHeight of div: " + $("#div1").innerHeight();
+                $("#div1").html(txt);
+            });
+            $("#btn3").click(function(){
+                var txt="";
+                txt+="outerWidth of div: " + $("#div1").outerWidth(true) + "</br>";
+                txt+="outerHeight of div: " + $("#div1").outerHeight(true);
+                $("#div1").html(txt);
+            });
+            $("#btn4").click(function(){
+                var txt="";
+                txt+="outerWidth of div: " + $("#div1").outerWidth() + "</br>";
+                txt+="outerHeight of div: " + $("#div1").outerHeight();
+                $("#div1").html(txt);
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="div1" style="display:inline-block;height:100px;width:300px;padding:10px;margin:30px;border:5px solid blue;background-color:lightblue;"></div>
+<br>
+<button id="btn0">设置 div width()的尺寸</button>
+<button id="btn1">显示 div width()的尺寸</button>
+<button id="btn2">显示 div innerWidth()的尺寸</button>
+<button id="btn3">显示 div outerWidth(true)的尺寸</button>
+<button id="btn4">显示 div outerWidth()的尺寸</button>
+</body>
+</html>

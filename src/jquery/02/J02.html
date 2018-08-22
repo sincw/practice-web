@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .siblings *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            $("#btn0").click(function(){
+                $("h2").siblings().css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn1").click(function(){
+                $("h2").siblings("p").css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn2").click(function(){
+                $("h2").next().css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn3").click(function(){
+                $("h2").nextAll().css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn4").click(function(){
+                $("h2").nextUntil("h3").css({"color":"red","border":"2px solid red"});
+            });
+            $("#btn5").click(function(){
+                $("h2").prevAll().css({"color":"red","border":"2px solid red"});
+            });
+
+            $("#btn00").click(function(){
+                $("div p").first().css("background-color","yellow");
+            });
+            $("#btn11").click(function(){
+                $("div p").last().css("background-color","yellow");
+            });
+            $("#btn22").click(function(){
+                $("div p").eq(1).css("background-color","yellow");
+            });
+        });
+    </script>
+</head>
+<body >
+
+<div class="siblings">div (父)
+    <p>p1</p>
+    <span>span</span>
+    <h2>h2</h2>
+    <p>p2</p>
+    <h3>h3</h3>
+    <p>p3</p>
+</div>
+<div>
+    <button id="btn0">返回H2的所有兄弟</button>
+    <button id="btn1">返回H2的p兄弟</button>
+    <button id="btn2">返回H2的下一个兄弟</button>
+    <button id="btn3">返回H2的下面的所有兄弟</button>
+    <button id="btn4">返回H2至H3之间的所有兄弟</button>
+    <button id="btn5">返回H2之前</button>
+</div>
+<div>
+    <button id="btn00">p:first</button>
+    <button id="btn11">p:last</button>
+    <button id="btn22">p:eq(1)</button>
+</div>
+
+</body>
+</html>

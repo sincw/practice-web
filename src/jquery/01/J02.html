@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#btn1").click(function(){
+                $("ol").append("<li>Appended item</li>");
+            });
+
+            $("#btn11").click(function(){
+                var li = "<li>Prepended item</li>";
+                $("ol").prepend(li,li);
+            });
+
+            $("#btn2").click(function(){
+                $("li").eq(1).before("<b>Before</b>");
+            });
+
+            $("#btn22").click(function(){
+                $("li").eq(1).after("<i>After</i>");
+            });
+        });
+    </script>
+</head>
+
+<body>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+<ol>
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ol>
+<button id="btn1">向后追加</button>
+<button id="btn11">向前追加2个</button>
+<button id="btn2">向第2个前追加</button>
+<button id="btn22">向第2个后追加2个</button>
+</body>
+</html>
